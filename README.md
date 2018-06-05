@@ -3,6 +3,13 @@
 [![Build Status](https://travis-ci.org/treble-snake/async-optional.svg?branch=master)](https://travis-ci.org/treble-snake/async-optional)
 [![Coverage Status](https://coveralls.io/repos/github/treble-snake/async-optional/badge.svg?branch=master)](https://coveralls.io/github/treble-snake/async-optional?branch=master)
 
+- [About](#About)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [AsyncOptional notes](#AsyncOptional+notes)
+- [Further reading](#Further+reading)
+- [License](#License)
+
 ## About
 
 This library implements generic value container with fluent API to help you write cleaner code in more unconditional way and get rid of endless null-checks. It's very similar to Java Optional class and provides some safe navigation abilities. And, most important thing - it works with Promises.
