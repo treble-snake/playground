@@ -169,7 +169,7 @@ await AsyncOptional.with(getSomeData())
 
 #### Another way
 
-It's kinda a violetion of the whole zen, but still can be the case. You can 
+It's kinda violation of the whole zen, but still can be the case. You can 
 check presence of your value and get it unwrapped to use for some purpose.
 ```js
 const instance = AsyncOptional.with(getSomeData());
