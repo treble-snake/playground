@@ -3,12 +3,12 @@
 [![Build Status](https://travis-ci.org/treble-snake/async-optional.svg?branch=master)](https://travis-ci.org/treble-snake/async-optional)
 [![Coverage Status](https://coveralls.io/repos/github/treble-snake/async-optional/badge.svg?branch=master)](https://coveralls.io/github/treble-snake/async-optional?branch=master)
 
-- [About](#About)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [AsyncOptional notes](#AsyncOptional+notes)
-- [Further reading](#Further+reading)
-- [License](#License)
+- [About](#about)
+- [Installation](#installation)
+- [Usage](#usage)
+- [AsyncOptional notes](#asyncoptional-notes)
+- [Further reading](#further-reading)
+- [License](#license)
 
 ## About
 
