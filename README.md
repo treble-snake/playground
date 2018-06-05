@@ -12,10 +12,14 @@
 
 ## About
 
-This library implements generic value container with fluent API to help you write cleaner code in more unconditional way and get rid of endless null-checks. It's very similar to Java Optional class and provides some safe navigation abilities. And, most important thing - it works with Promises.
+This library implements generic value container with fluent API to help you write 
+cleaner code in more unconditional way and get rid of endless null-checks. 
+It's very similar to Java Optional class and provides some safe navigation abilities. 
+And, most important thing — it works with Promises.
 
  
-Inspired by [Java Optional](https://docs.oracle.com/javase/9/docs/api/java/util/Optional.html) and [Optional.js](https://github.com/JasonStorey/Optional.js) implementation.
+Inspired by [Java Optional](https://docs.oracle.com/javase/9/docs/api/java/util/Optional.html) 
+and [Optional.js](https://github.com/JasonStorey/Optional.js) implementation.
 
 Compare these examples:
 
@@ -53,7 +57,10 @@ getUserData()
   .or(respondNotFound);
 ```
 
-Of course, [Optional.js](https://github.com/JasonStorey/Optional.js) can do all of this. But now you can use `AsyncOptional` and work with asynchronous values and callbacks and just add couple of fancy `await`s (or use `then/catch` if you have to).  
+Of course, [Optional.js](https://github.com/JasonStorey/Optional.js) can do 
+all of this. But now you can use `AsyncOptional` and work with asynchronous 
+values and callbacks and just add couple of fancy `await`s (or use `then/catch` 
+if you have to).  
 
 Just like that:
 ```js
@@ -87,7 +94,8 @@ const {AsyncOptional, Optional} = require('async-optional');
 Supports Node.js 6 or newer.
 
 ## Usage
-There are some usage examples of AsyncOptional. Case for Optional will be the same except no `await` needed.
+There are some usage examples of AsyncOptional. Case for Optional will be 
+the same except no `await` needed.
 
 ### Create it
 There are 3 ways of creating an Optional instance:
@@ -125,7 +133,7 @@ const instance = AsyncOptional.with(getSomeData())
 ```
 
 All callbacks can be asynchronous (returning Promise) and are lazy-executed,
-meaning that if current value if empty, none of `take()`, `map()`, `flatMap()` and `filter()`
+meaning that if current value is empty, none of `take()`, `map()`, `flatMap()` and `filter()`
 callback will be executed.
 And vise versa, if current value is present, `orCompute()` and `orFlatCompute()`
 callbacks won't run.
@@ -158,7 +166,7 @@ await AsyncOptional.with(getSomeData())
 
 ```
 
-Bonus (for fans of the approach) - you can pass both callbacks at once:
+Bonus (for fans of the approach) — you can pass both callbacks at once:
 ```js
 await AsyncOptional.with(getSomeData())
   .eitherOr(
@@ -190,11 +198,11 @@ Once again, this is not the recommended way to do it.
 
 ## AsyncOptional notes
 ### Performance tips
-Using Promises comes with a price - `AsyncOptional` works slower than `Optional`. 
-So if you don't need any async values or callbacks - better use `Optional`.
+Using Promises comes with a price — `AsyncOptional` works slower than `Optional`. 
+So if you don't need any async values or callbacks — better use `Optional`.
 
-Also, if you have both sync and async callbacks, putting async ones as late in the chain as you can
-might give you a slight performance boost. E.g.:
+Also, if you have both sync and async callbacks, putting async ones as late 
+in the chain as you can might give you a slight performance boost. E.g.:
 ```js
 // this is slower
 await AsyncOptional.with(42)
@@ -222,7 +230,7 @@ or `await`:
 ```js
 const instance = AsyncOptional.with(42)
   .map(value => { throw new Error('Fail fast!') })
-  // you'll got Error there, further code won't execute
+  // you'll get Error there, further code won't execute
   .filter(predicate());
 ```
 
