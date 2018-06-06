@@ -27,17 +27,17 @@ Compare these examples:
 ```js
 function getUserData() {
   const user = getUser();
-  if(user === null || !user.isActive) {
+  if (user === null || !user.isActive) {
     return null;
   }
   
-  Object.assign(user, {friends: getFriends(user)});
+  Object.assign(user, { friends: getFriends(user) });
   
   return user;
 }
 
 const userData = getUserData();
-if(userData !== null) {
+if (userData !== null) {
   respond(userData)
 } else {
   respondNotFound();
@@ -49,7 +49,7 @@ if(userData !== null) {
 function getUserData() {
   return Optional.with(getUser())
     .filter(user => user.isActive)
-    .map(user => Object.assign(user, {friends: getFriends(user)}))
+    .map(user => Object.assign(user, { friends: getFriends(user) }))
 }
 
 getUserData()
@@ -122,14 +122,22 @@ const instance = AsyncOptional.empty();
 Then you can do a bunch of transformations with you data via fluent API:
 ```js
 const instance = AsyncOptional.with(getSomeData())
-  .orUse(42) // value to use if current is empty
-  .orCompute(() => { return 42; }) // function to generate new value if current is empty
-  .orFlatCompute(() => AsyncOptional.with(getAnotherData())) // function to get new optional
-  .take('foo') // takes property with name `foo` from current data
-  .map(value => value + getDiff(value)) // change the value somehow
-  .flatMap(value => AsyncOptional.with(maybeGetData(value))) // modify it more
-  .filter(value => value > 10) // check if it's valid
-  .map(value => Object.assign({}, someBase, {value})); // and modify it further
+   // value to use if current is empty
+  .orUse(42)
+  // function to generate new value if current is empty
+  .orCompute(() => { return produceSomeValue(42); })
+  // function to get new optional
+  .orFlatCompute(() => AsyncOptional.with(getAnotherData()))
+  // takes property with name `foo` from current data
+  .take('foo')
+  // change the value somehow
+  .map(value => value + getDiff(value))
+  // modify it more, using another AsyncOptional
+  .flatMap(value => AsyncOptional.with(maybeGetData(value)))
+  // check if it's valid 
+  .filter(value => value > 10) 
+  // and modify it further
+  .map(value => Object.assign({}, someBase, {value})); 
 ```
 
 All callbacks can be asynchronous (returning Promise) and are lazy-executed,
@@ -182,14 +190,14 @@ check presence of your value and get it unwrapped to use for some purpose.
 ```js
 const instance = AsyncOptional.with(getSomeData());
 
-if(await instance.hasValue()) {
+if (await instance.hasValue()) {
   doSomethingWithValue(await instance.get());
 } else {
   // some action on absence of value
 }
 
 // or just react on absence
-if(await instance.isEmpty()) {
+if (await instance.isEmpty()) {
   printSomeError();
 }
 ``` 
@@ -230,7 +238,7 @@ or `await`:
 ```js
 const instance = AsyncOptional.with(42)
   .map(value => { throw new Error('Fail fast!') })
-  // you'll get Error there, further code won't execute
+  // you'll get the Error there, further code won't execute
   .filter(predicate());
 ```
 
