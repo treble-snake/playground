@@ -126,9 +126,9 @@ const instance = AsyncOptional.with(getSomeData())
   .orUse(42)
   // function to generate new value if current is empty
   .orCompute(() => { return produceSomeValue(42); })
-  // function to get new optional
+  // function to get new optional if current value is empty
   .orFlatCompute(() => AsyncOptional.with(getAnotherData()))
-  // takes property with name `foo` from current data
+  // take property with name `foo` from current data
   .take('foo')
   // change the value somehow
   .map(value => value + getDiff(value))
